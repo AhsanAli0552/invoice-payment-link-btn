@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_add_button" inherit_id="account.report_invoice_document">
+        <xpath expr="//p[contains(., 'Payment Communication')]" position="after">
+            <t t-foreach="docs" t-as="doc">
+                <t t-if="doc.payment_state != 'paid' and doc.move_type == 'out_invoice'">
+                    <div style="margin-top: 20px;">
+                        <a t-att-href="doc.payment_link()"
+                           style="display:inline-block; background-color:#007bff; color:white;
+                                  padding:10px 20px; text-decoration:none; border-radius:5px; font-weight:bold; font-size:14px;">
+                            Pay Invoice
+                        </a>
+                    </div>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</odoo>
